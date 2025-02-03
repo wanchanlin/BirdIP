@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird IP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaRYY1GuLjHyH4DowS46C0mt6UB31U8Cs&callback=initMap"
+        async defer></script>
+    <script>
+        function initMap() {
+            var location = { lat: 43.65107, lng: -79.347015 }; // Coordinates for Toronto, Ontario, Canada
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+</head>
+
+<body>
+    
+    <!-- Add your content here -->
+    <h2>Bird IP</h2>
+    <p>I have a deep appreciation for birds, drawn to their beauty, unique behaviors, and the sense of wonder they bring. Whether it’s observing their vibrant colors, listening to their songs, or learning about different species, birds have always been a source of fascination. This passion extends to exploring bird habitats, understanding their role in ecosystems, and perhaps even capturing their elegance through photography or illustration</p>
+    <div> <img src="bird01.png" alt=""> <img src="bird02.png" alt=""></div>
+    <div class="container">
+        <div style="padding: 2rem; background-color: #1d1d1d; border-radius: 1rem; margin:.5rem auto;" class="IPCard">
+        
+            <div class="grid-container">
+                <div class="grid-item">
+                    <main>
+                        <div>
+                            <h3>Your IP address : </h3>
+                            <div class="ip-box">
+
+                                <p>70.53.67.100</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Your IP information: </h3>
+                            <div class="ip-box">
+                                <p>Toronto, Ontario, Canada</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Local Birds:</h3>
+                            <div class="ip-box">
+                                <p>1. Northern Cardinal 
+                                    2. American Robin 
+                                    3. Indigo Bunting 
+                                    4. Common Nighthawk 
+                                    5. Long-tailed Duck 
+                                    6. Black-Capped Chickadee 
+                                    7. Turkey Vulture 
+                                    8. Ruby-throated Hummingbird
+                                 </p>
+                            </div>
+                        </div>
+                    </main>
+
+                </div>
+                <div class="grid-item">
+                    <div>
+
+                        <div id="map" style=" height: 230px; width: 100%;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
