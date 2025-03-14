@@ -31,8 +31,11 @@ $json = json_decode($response, true);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your City</title>
     <link rel="stylesheet" href="styles/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaRYY1GuLjHyH4DowS46C0mt6UB31U8Cs&callback=initMap"
-        async defer></script>
+    <?php
+    '<script src="https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAPS_API_KEY.'&callback=initMap"
+        async defer>
+    </script>' ?>
+
     <script>
         function initMap() {
             var location = { lat: 43.65107, lng: -79.347015 }; // Coordinates for Toronto, Ontario, Canada
