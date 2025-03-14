@@ -1,11 +1,36 @@
+<?php
+
+$env = file(__DIR__.'/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+foreach($env as $value)
+{
+  $value = explode('=', $value);  
+  define($value[0], $value[1]);
+}
+
+include('functions.php');
+
+$ip = get_user_ip();
+
+$url = 'https://api.ipstack.com/'.$ip.'?access_key='.IPSTACK_ACCESS_KEY;
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+curl_close($ch);
+
+$json = json_decode($response, true);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bird IP</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your City</title>
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaRYY1GuLjHyH4DowS46C0mt6UB31U8Cs&callback=initMap"
         async defer></script>
     <script>
@@ -22,13 +47,15 @@
         }
     </script>
 </head>
-
 <body>
-    
-    <!-- Add your content here -->
-    <h2>Bird IP</h2>
+
+
+
+
+<!-- Add your content here -->
+<h1>Bird IP</h1>
     <p>I have a deep appreciation for birds, drawn to their beauty, unique behaviors, and the sense of wonder they bring. Whether it’s observing their vibrant colors, listening to their songs, or learning about different species, birds have always been a source of fascination. This passion extends to exploring bird habitats, understanding their role in ecosystems, and perhaps even capturing their elegance through photography or illustration</p>
-    <div> <center><img src="chick.svg" alt=""> <img src="chick.svg" alt=""><img src="chick.svg" alt=""></center></div>
+    <div> <center><img src="images/chick.svg" alt=""> <img src="images/chick.svg" alt=""><img src="images/chick.svg" alt=""></center></div>
     <div class="container">
         <div style="padding: 2rem; background-color: #1d1d1d; border-radius: 1rem; margin:.5rem auto;" class="IPCard">
         
@@ -39,13 +66,13 @@
                             <h3>Your IP address : </h3>
                             <div class="ip-box">
 
-                                <p>70.53.67.100</p>
+                                <p><?=$json['ip']?></p>
                             </div>
                         </div>
                         <div>
                             <h3>Your IP information: </h3>
                             <div class="ip-box">
-                                <p>Toronto, Ontario, Canada</p>
+                                <p> <?=$json['city']?></p>
                             </div>
                         </div>
                         <div>
@@ -75,7 +102,12 @@
             </div>
         </div>
     </div>
+<?php
 
+echo '<pre>';
+print_r($json);
+echo '</pre>';
+
+?>
 </body>
-
 </html>

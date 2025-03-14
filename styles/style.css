@@ -1,11 +1,21 @@
 /* ========== Global Styles ========== */
+:root {
+    width: 80vw;
+    padding: auto;
+    --primary-color: #68f522;
+    --secondary-color: #f4f4f4;
+    max-width: 800px;
+}
+
 body {
+    width: 80vw;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
     background-color: #252525;
     color: #5fab39;
+    max-width: 800px;
 }
 
 h2{
@@ -25,8 +35,8 @@ form textarea {
     
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #333; /* Set the background color of inputs to dark grey */
-    color: #fff; /* Set the text color to white */
+    background-color: #333; 
+    color: #fff; 
 }
 /* ========== Header ========== */
 header {
