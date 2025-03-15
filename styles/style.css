@@ -1,8 +1,8 @@
 /* ========== Global Styles ========== */
 :root {
+    margin: auto;
     width: 80vw;
-    padding: auto;
-    --primary-color: #68f522;
+       --primary-color: #68f522;
     --secondary-color: #f4f4f4;
     max-width: 800px;
 }

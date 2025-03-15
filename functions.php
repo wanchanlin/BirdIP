@@ -5,6 +5,7 @@
  * This function was copied from:
  * https://stackoverflow.com/questions/3003145/how-to-get-the-client-ip-address-in-php
  */
+
 function get_user_ip()
 {
     // List of server variables that may contain the client's IP address
@@ -41,3 +42,16 @@ function get_user_ip()
 
     return $ip;
 }
+
+
+
+// function get_user_ip() {
+//     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+//         return $_SERVER['HTTP_CLIENT_IP'];
+//     } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+//         return $_SERVER['HTTP_X_FORWARDED_FOR'];
+//     } else {
+//         return $_SERVER['REMOTE_ADDR'];
+//     }
+// }
+?>

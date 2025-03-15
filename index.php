@@ -32,22 +32,64 @@ $json = json_decode($response, true);
     <title>Your City</title>
     <link rel="stylesheet" href="styles/style.css">
     <?php
-    '<script src="https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAPS_API_KEY.'&callback=initMap"
-        async defer>
-    </script>' ?>
+echo '<script src="https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAPS_API_KEY.'&callback=initMap"
+async defer></script>';
+?>
 
     <script>
+        let map, infoWindow;
+
         function initMap() {
-            var location = { lat: 43.65107, lng: -79.347015 }; // Coordinates for Toronto, Ontario, Canada
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: location
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
-            });
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { 
+      lat: <?= $json['latitude'] ?? 0 ?>, 
+      lng: <?= $json['longitude'] ?? 0 ?> 
+    },
+    zoom: 6,
+  });
+
+  infoWindow = new google.maps.InfoWindow();
+
+  const locationButton = document.createElement("button");
+  locationButton.textContent = "Pan to Current Location";
+  locationButton.classList.add("custom-map-control-button");
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+
+  locationButton.addEventListener("click", () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent("Location found.");
+          infoWindow.open(map);
+          map.setCenter(pos);
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter());
         }
+      );
+    } else {
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  });
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
+
+window.initMap = initMap;
     </script>
 </head>
 <body>
@@ -107,8 +149,8 @@ $json = json_decode($response, true);
     </div>
 <?php
 
-echo '<pre>';
-print_r($json);
+// echo '<pre>';
+// print_r($json);
 echo '</pre>';
 
 ?>
