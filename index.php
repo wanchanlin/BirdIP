@@ -90,6 +90,21 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 window.initMap = initMap;
+function get_recent_bird_sightings($lat, $lng) {
+    $url = "https://api.ebird.org/v2/data/obs/geo/recent?lat={$lat}&lng={$lng}";
+    $headers = [
+        'X-eBirdApiToken: ' . EBIRD_API_KEY
+    ];
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+    return $data;
+}
     </script>
 </head>
 <body>
@@ -99,6 +114,7 @@ window.initMap = initMap;
 
 <!-- Add your content here -->
 <h1>Bird IP</h1>
+
     <p>I have a deep appreciation for birds, drawn to their beauty, unique behaviors, and the sense of wonder they bring. Whether it’s observing their vibrant colors, listening to their songs, or learning about different species, birds have always been a source of fascination. This passion extends to exploring bird habitats, understanding their role in ecosystems, and perhaps even capturing their elegance through photography or illustration</p>
     <div> <center><img src="images/chick.svg" alt=""> <img src="images/chick.svg" alt=""><img src="images/chick.svg" alt=""></center></div>
     <div class="container">
@@ -147,6 +163,21 @@ window.initMap = initMap;
             </div>
         </div>
     </div>
+
+<div>
+    <h3>Local Birds:</h3>
+    <div class="ip-box">
+        <?php if (!empty($bird_data)): ?>
+            <ul>
+                <?php foreach ($bird_data as $bird): ?>
+                    <li><?= htmlspecialchars($bird['comName']) ?> (<?= htmlspecialchars($bird['sciName']) ?>)</li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>No recent bird sightings found.</p>
+        <?php endif; ?>
+    </div>
+</div>
 <?php
 
 // echo '<pre>';
