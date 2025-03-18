@@ -2,7 +2,7 @@
 :root {
     margin: auto;
     width: 80vw;
-       --primary-color: #68f522;
+    --primary-color: #68f522;
     --secondary-color: #f4f4f4;
     max-width: 800px;
 }
@@ -404,7 +404,10 @@ footer {
     display: inline-block;
     animation: blink 1s step-end infinite;
 }
-
+/* .bird-list{
+    background-color: #68f522;
+    color: #303030;
+} */
 @keyframes blink {
     from, to {
         opacity: 1;

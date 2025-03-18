@@ -1,4 +1,2 @@
-<Files .env>
-order allow,deny
-Deny from all
-</Files>
+php_value display_errors On
+
