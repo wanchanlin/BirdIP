@@ -101,7 +101,8 @@ if (!empty($json['latitude']) && !empty($json['longitude'])) {
     </script>
 </head>
 <body>
-    <h1>Bird IP</h1>
+    <section>
+     <center><h1>Bird IP</h1></center>
     <p>I have a deep appreciation for birds, drawn to their beauty, unique behaviors, and the sense of wonder they bring. Whether it's observing their vibrant colors, listening to their songs, or learning about different species, birds have always been a source of fascination. This passion extends to exploring bird habitats, understanding their role in ecosystems, and perhaps even capturing their elegance through photography or illustration.</p>
     <div> 
         <center>
@@ -124,7 +125,7 @@ if (!empty($json['latitude']) && !empty($json['longitude'])) {
                         <div>
                             <h3>Your IP information: </h3>
                             <div class="ip-box">
-                                <p><?= $json['city'] ?? 'Unknown' ?></p>
+                            <p><?= $json['city'] . ', ' . $json['region_name'] . ', ' . $json['country_name'] ?? 'Unknown' ?></p>
                             </div>
                         </div>
                         <div>
@@ -134,10 +135,11 @@ if (!empty($json['latitude']) && !empty($json['longitude'])) {
     <?php $count = 0; ?>
     <div class="top-birds-container">
         <?php foreach ($bird_data as $bird): ?>
-            <?php if ($count < 10): ?>
-                <div class="bird-list">
+            <?php if ($count < 5): ?>
+                <div target="_blank" class="bird-list">
                     <span class="rank"><?= ++$count ?></span>
-                    <span class="bird-name"><?= htmlspecialchars($bird['comName']) ?></span>
+                    <a target="_blank" href="https://en.wikipedia.org/w/index.php?search=<?= urlencode($bird['comName']) ?>">
+                    <span class="bird-name"><?= htmlspecialchars($bird['comName']) ?></a></span>
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
@@ -148,6 +150,11 @@ if (!empty($json['latitude']) && !empty($json['longitude'])) {
     </div>
                         </div>
                     </main>
+                    <a href="birds.php">
+                        <button class="btn"> More Local Birds</button>
+                    </a>
+                    
+                    </a>
                 </div>
                 <div class="grid-item">
                     <div id="map" style="height: 230px; width: 100%;"></div>
@@ -156,7 +163,7 @@ if (!empty($json['latitude']) && !empty($json['longitude'])) {
         </div>
     </div>
     
-    
+    </section> 
     <!-- <?php
         print_r($bird_data);
     ?> -->
