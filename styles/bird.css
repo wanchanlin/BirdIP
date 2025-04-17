@@ -1,0 +1,119 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8e7; /* Light greenish background */
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('../images/bird-bg.jpg'); /* Optional background image */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Section styling */
+section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Header styles */
+h1 {
+    font-size: 2.5rem;
+    color: #2c5f2d; /* Deep green */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Container styling */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    border: 2px solid #2c5f2d; /* Green border */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #dfe6e9;
+}
+
+thead {
+    background-color: #2c5f2d;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 12px;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+tr:hover {
+    background-color: #e8f5e9;
+}
+
+/* Rank styling */
+.rank {
+    display: inline-block;
+    background-color: #82b74b; /* Leaf green */
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Button styles */
+.btn a {
+    width: 4rem;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #4e944f; /* Forest green */
+    padding: 8px 16px;
+    border-radius: 12px;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.btn a:hover {
+    background-color: #3b7f3b;
+}
+
+/* No data message */
+p {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .btn a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

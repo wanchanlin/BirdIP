@@ -50,7 +50,7 @@ if ($latitude && $longitude) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bird IP</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/bird.css">
 </head>
 <body>
 <section>
@@ -66,7 +66,7 @@ if ($latitude && $longitude) {
                     <th>Species Name</th>
                     <th>Scientific Name</th>
                     <th>Location</th>
-                    <th>More Info</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -79,11 +79,11 @@ if ($latitude && $longitude) {
                         </td>
                         <td><?= htmlspecialchars($bird['comName']) ?></td>
                         <td><?= htmlspecialchars($bird['sciName'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($bird['locName'] ?? 'Unknown') ?> 
-                        <span style="color:#000" class="btn"><a href="https://en.wikipedia.org/w/index.php?search=<?= urlencode($bird['comName']) ?>" target="_blank">
+                        <td><?= htmlspecialchars($bird['locName'] ?? 'Unknown') ?> </td>
+                        <td class="btn">
+                            <a href="https://en.wikipedia.org/w/index.php?search=<?= urlencode($bird['comName']) ?>" target="_blank">
                                 View More
                             </a>
-                        </span>
                         </td>
                    
                             
@@ -96,5 +96,9 @@ if ($latitude && $longitude) {
     <?php endif; ?>
 </div>
 </section>
+
+    <footer>
+        <p>&copy; 2025 Bird IP</p>
+    </footer>
 </body>
 </html>
