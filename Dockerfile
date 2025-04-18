@@ -5,6 +5,7 @@ RUN a2enmod rewrite
 
 # Copy all website files to Apache root
 
-COPY . /var/www/html
+COPY . /index.php
+COPY . /bird.php
 
 EXPOSE 80
