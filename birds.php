@@ -54,8 +54,8 @@ if ($latitude && $longitude) {
 </head>
 <body>
 <section>
-<center>
-<h1><?= "{$city}, {$region}, {$country}" ?></h1></center>
+
+<h1><?= "{$city}, {$region}, {$country}" ?></h1>
 <div class="container">
 
     <?php if (!empty($bird_data)): ?>
@@ -82,7 +82,7 @@ if ($latitude && $longitude) {
                         <td><?= htmlspecialchars($bird['locName'] ?? 'Unknown') ?> </td>
                         <td class="btn">
                             <a href="https://en.wikipedia.org/w/index.php?search=<?= urlencode($bird['comName']) ?>" target="_blank">
-                                View More
+                                View
                             </a>
                         </td>
                    

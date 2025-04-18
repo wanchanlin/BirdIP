@@ -19,6 +19,7 @@ body {
 }
 h1{
     margin:auto !important;
+    text-align: center;
 }
 
 h2{
@@ -78,13 +79,20 @@ nav {
        padding: 1rem;
 
 }
+
 .ip-box{
     display: flex;
     padding: .5rem;    
     margin: 0.5rem 0;
     background-color: #383838;
-    border-radius: .5rem;
-    
+    border-radius: .5rem;    
+}
+
+.ip-card{
+padding: 2rem; 
+background-color: #1d1d1d; 
+border-radius: 1rem; 
+margin:.5rem auto;
 }
 .tabs {
  
@@ -631,34 +639,6 @@ footer {
     }
     
 }
-Avatar
-Your CSS is quite extensive, and organizing it can help improve maintainability and readability. Here’s a structured approach to organizing your CSS:
-1. Directory Structure
-Create a directory structure to separate different types of styles. For example:
-Copy
-styles/
-├── base/
-│   ├── _reset.css
-│   ├── _typography.css
-├── components/
-│   ├── _buttons.css
-│   ├── _cards.css
-│   ├── _forms.css
-│   ├── _navigation.css
-│   ├── _tabs.css
-├── layout/
-│   ├── _global.css
-│   ├── _header.css
-│   ├── _footer.css
-├── utilities/
-│   ├── _responsive.css
-│   ├── _variables.css
-└── main.css
-2. Modularize Your CSS
-Break down your CSS into smaller, more manageable files based on the directory structure above. Here’s how you can organize your current CSS:
-styles/base/_reset.css
-css
-Copy
 /* ========== Global Styles ========== */
 :root {
     margin: auto;

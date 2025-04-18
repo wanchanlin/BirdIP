@@ -1,2 +1,5 @@
-php_value display_errors On
-
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
